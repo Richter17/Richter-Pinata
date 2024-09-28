@@ -75,12 +75,12 @@ namespace PinataMiniGame
 
         private async Task DelayShowMenu()
         {
-            await Task.Delay(TimeSpan.FromSeconds(5));
+            await Task.Delay(TimeSpan.FromSeconds(7));
             await _lightsMain.DOScale(Vector3.zero, 0.5f).SetEase(Ease.OutSine).AsyncWaitForCompletion();
-            await ShowMenu();
             _lightsMain.gameObject.SetActive(false);
             _pinataMain.gameObject.SetActive(false);
             _pinata.Reset();
+            await ShowMenu();
         }
 
         private async Task Enter()

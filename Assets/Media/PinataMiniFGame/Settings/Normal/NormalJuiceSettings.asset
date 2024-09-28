@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Juice>k__BackingField: 0
   <ChargeDelay>k__BackingField: 0.3
+  <ReturnSpeed>k__BackingField: 0.8
+  <TimeoutMultiplier>k__BackingField: 1
   <Phases>k__BackingField:
   - 1.5
   - 2.5
@@ -23,3 +25,4 @@ MonoBehaviour:
   - {fileID: 3306303044028191216, guid: e37545724179225468c6c79578811c39, type: 3}
   - {fileID: 4897744570480146504, guid: 6021c355ead3a3a4587a47109a29d030, type: 3}
   - {fileID: -1962984393378175950, guid: 5cf458e7be55843458b122c56f23c83d, type: 3}
+  - {fileID: 5834071874728658891, guid: 2614cf73c5d08f54e90a02445cb6ffd1, type: 3}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Plugins.Richter.Haptic;
 using UnityEngine;
 
@@ -41,8 +42,9 @@ namespace PinataMiniGame
 			HapticController.Instance.Vibrate(_hitVibrationType);
 		}
 
-		private void VibrateExplosion()
+		private async Task VibrateExplosion()
 		{
+			await Task.Delay(TimeSpan.FromSeconds(1));
 			HapticController.Instance.Vibrate(_explodingSequence);
 		}
 	}
