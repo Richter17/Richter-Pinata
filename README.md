@@ -33,8 +33,7 @@
  Each element inherite from PinataListener and this can add many functionalites or features in the experience on hit and on explosion.
  Using the settings I can modify the levels add more levels and effect based on the requirements.
 
-Haptic feedback is created thorugh Java and Android studio (.aar) file
-Also There is a test window you can try and see the vibration sequence
+Haptic feedback is created thorugh Java and Android studio (.aar) file, also There is a test window you can try and see the vibration sequence
 ![image](https://github.com/user-attachments/assets/bde033bb-abaa-4ac6-bace-455c27e53a56)
 
 
