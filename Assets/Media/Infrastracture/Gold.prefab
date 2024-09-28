@@ -91,10 +91,10 @@ MonoBehaviour:
   _icon: {fileID: 5459044562615250356}
   _value: {fileID: 5459044562690978606}
   _valueToImages:
-  - Amount: 0
+  - Amount: 1000
     Value: 
     Icon: {fileID: 21300000, guid: 0fcb74e2a02a1e0419100a5141dd1191, type: 3}
-  - Amount: 1000
+  - Amount: 2500
     Value: 
     Icon: {fileID: 21300000, guid: 1139cbb518ee7014080214c72e288a4a, type: 3}
   - Amount: 5000
