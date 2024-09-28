@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3306303044028191218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3306303044028191217}
+  - component: {fileID: 3306303044028191216}
+  m_Layer: 0
+  m_Name: PinataSfxController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3306303044028191217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3306303044028191218}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3306303044028191216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3306303044028191218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea8c80c4ce3e4ddf9161a09b398536cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitSound: 0.5
+  _delayInExplosionSfx: 1
+  _hitsPinataSfx:
+  - {fileID: 8300000, guid: 43b30c78a7d21624c85e88f5c714fea2, type: 3}
+  - {fileID: 8300000, guid: 9a1a0f33fcf92434083fd4720188766a, type: 3}
+  - {fileID: 8300000, guid: c73c1a3d94b22f349b02d78deced06c1, type: 3}
+  - {fileID: 8300000, guid: 26b62ad7eea7c8c40b6a4e5fd56c7023, type: 3}
+  - {fileID: 8300000, guid: 5f5480753d7e9434a9db2863f281773f, type: 3}
+  - {fileID: 8300000, guid: 3553cb9cbf22a1143a29eafef65ae9ff, type: 3}
+  _hitsCrackSfx:
+  - {fileID: 8300000, guid: 40bf815bcb6dac9428788322ab5f0899, type: 3}
+  - {fileID: 8300000, guid: 9076ba01445c35d4f98749a260f8533a, type: 3}
+  _explosionsSfx:
+  - {fileID: 8300000, guid: a560962b45a549f4ca28ae6a7b8491b3, type: 3}
+  - {fileID: 8300000, guid: 733ae03ab45812341b1ef00195af7d22, type: 3}
+  - {fileID: 8300000, guid: 3d389dc9689db354d95a1c453ee12d80, type: 3}

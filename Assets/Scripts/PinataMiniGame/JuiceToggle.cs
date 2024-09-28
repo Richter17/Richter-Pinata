@@ -6,7 +6,7 @@ namespace PinataMiniGame
 	public enum JuiceType
 	{
 		Normal,
-		Hared,
+		Hard,
 		Crazy
 	}
 	public class JuiceToggle : MonoBehaviour

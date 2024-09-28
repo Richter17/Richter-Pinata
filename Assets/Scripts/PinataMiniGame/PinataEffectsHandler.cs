@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using Infrastructure;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace PinataMiniGame
 {
-	public class PinataEffectsHandler : MonoBehaviour
+	public class PinataEffectsHandler : PinataListener
 	{
-		[SerializeField] private PinataHandler _main;
 		[SerializeField] private float _radius = 1;
 		[SerializeField] private ParticleSystem _pinataSparkles;
 		[SerializeField] private ParticleSystem _pinataSparklesBig;
@@ -22,18 +19,16 @@ namespace PinataMiniGame
 			Gizmos.DrawWireSphere(transform.position, _radius);
 		}
 
-		private void Awake()
+		public override void Init(PinataHandler pinataHandler)
 		{
-			_main.OnHit += OnHit;
-			_main.OnPhasePass += OnPhasePass;
-			_main.OnExplosion += OnExplosion;
+			base.Init(pinataHandler);
 			_particlesPool = new(p
 					=> p.gameObject.SetActive(true),
 				p => p.gameObject.SetActive(false),
 				() => Instantiate(_pinataSparkles, transform));
 		}
 
-		private void OnExplosion()
+		protected override void OnExplosion()
 		{
 			for (int i = 0; i < _sparksOnExplosions; i++)
 			{
@@ -41,22 +36,27 @@ namespace PinataMiniGame
 			}
 		}
 
-		private void OnHit(float charge)
+		protected override void OnHit(float charge)
 		{
 			var sparks = _particlesPool.Get();
 			SetEffectPosition(sparks.transform);
 			StartCoroutine(ReturnToPoolWhenFinished(sparks));
 		}
 		
+		protected override void OnPhasePass(int obj)
+		{
+			ExplodeBig();
+		}
+
+		protected override void OnReset()
+		{
+			
+		}
+
 		private IEnumerator ReturnToPoolWhenFinished(ParticleSystem ps)
 		{
 			yield return new WaitWhile(() => ps.isPlaying);
 			_particlesPool.Release(ps);
-		}
-
-		private void OnPhasePass(int obj)
-		{
-			ExplodeBig();
 		}
 
 		private void ExplodeBig()

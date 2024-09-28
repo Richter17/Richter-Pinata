@@ -13,7 +13,7 @@ public class VibrationTesterWindow : EditorWindow
     private Vector2 _scrollPosition; // Scroll position for the list
     private bool _isPlaying = false; // Track if vibration is playing
 
-    private const string VibrateSoundPath = "Assets/Plugins/Garage/Haptic/Editor/vibrate_sfx.wav";
+    private const string VibrateSoundPath = "Assets/Plugins/Richter/Haptic/Editor/vibrate_sfx.wav";
 
     [Serializable]
     private class VibrateWave
@@ -102,7 +102,7 @@ public class VibrationTesterWindow : EditorWindow
         _audioSource.clip = _vibrationClip;
         _audioSource.loop = true;
         _isPlaying = true;
-        PlayVibrationAsync().Start();
+        PlayVibrationAsync();
     }
 
     private async Task PlayVibrationAsync()

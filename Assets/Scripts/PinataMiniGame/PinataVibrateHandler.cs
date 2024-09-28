@@ -5,31 +5,45 @@ using UnityEngine;
 
 namespace PinataMiniGame
 {
-	public class PinataVibrateHandler : MonoBehaviour
+	public class PinataVibrateHandler : PinataListener
 	{
-		[SerializeField] private PinataHandler _pinata;
-
-		private void Awake()
+		[SerializeField] private VibrationType _hitVibrationType;
+		[SerializeField] private List<VibrateStep> _explodingSequence = new()
 		{
-			_pinata.OnHit += OnPinataHit;
-			_pinata.OnExplosion += OnPinataExplode;
+			new (0.5f, 0.2f),
+			new (0.0f, 0.01f),
+			new (0.5f, 0.2f),
+			new (0.0f, 0.01f),
+			new (1f, 0.75f),
+		};
+		protected override void OnExplosion()
+		{
+			VibrateExplosion();
 		}
 
-		private void OnPinataHit(float charge)
+		protected override void OnPhasePass(int index)
 		{
-			HapticController.Instance.Vibrate(VibrationType.Medium);
+			
 		}
 
-		private void OnPinataExplode()
+		protected override void OnHit(float charge)
 		{
-			HapticController.Instance.Vibrate(new List<(float amplitude, float duration)>()
-			{
-				(0.5f, 0.2f),
-				(0.0f, 0.01f),
-				(0.5f, 0.2f),
-				(0.0f, 0.01f),
-				(1f, 0.75f),
-			});
+			VibrateHit();
+		}
+
+		protected override void OnReset()
+		{
+			
+		}
+
+		private void VibrateHit()
+		{
+			HapticController.Instance.Vibrate(_hitVibrationType);
+		}
+
+		private void VibrateExplosion()
+		{
+			HapticController.Instance.Vibrate(_explodingSequence);
 		}
 	}
 }

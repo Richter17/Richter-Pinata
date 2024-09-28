@@ -215,6 +215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8109337857053778659}
   - component: {fileID: 5263157226885811646}
+  - component: {fileID: 7769363700922704761}
   m_Layer: 5
   m_Name: toggle_hardJuice
   m_TagString: Untagged
@@ -291,8 +292,33 @@ MonoBehaviour:
   m_Group: {fileID: 1159207274003993867}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7769363700922704761}
+        m_TargetAssemblyTypeName: PinataMiniGame.JuiceToggle, Assembly-CSharp
+        m_MethodName: SetState
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
+--- !u!114 &7769363700922704761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3249130659228583039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd70effb2c6f47919d79c35be6be9405, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _juiceType: 1
 --- !u!1 &5664669817978030347
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9124318639367092108}
   - component: {fileID: 8396464144966536884}
+  - component: {fileID: 2648162703331087816}
   m_Layer: 5
   m_Name: toggle_normalJuice
   m_TagString: Untagged
@@ -379,8 +406,33 @@ MonoBehaviour:
   m_Group: {fileID: 1159207274003993867}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2648162703331087816}
+        m_TargetAssemblyTypeName: PinataMiniGame.JuiceToggle, Assembly-CSharp
+        m_MethodName: SetState
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
+--- !u!114 &2648162703331087816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5664669817978030347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd70effb2c6f47919d79c35be6be9405, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _juiceType: 0
 --- !u!1 &6097694028085219064
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,6 +929,10 @@ MonoBehaviour:
   _pinataMain: {fileID: 6668091927527634771}
   _menu: {fileID: 3249361551474715859}
   _introSfx: {fileID: 8300000, guid: 540c4404ac22cbd44a2087f96de9b3c1, type: 3}
+  _settings:
+  - {fileID: 11400000, guid: 5f673cb63e431dc449048982458d6e96, type: 2}
+  - {fileID: 11400000, guid: ccb86a2353a69cd438a3fbdfc5a7f3d3, type: 2}
+  - {fileID: 11400000, guid: 35ad9f5231e2a7c4e835ca8bd3a02174, type: 2}
 --- !u!1 &6668091925999492516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,6 +1408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5197788905444819297}
   - component: {fileID: 1739743761223635199}
+  - component: {fileID: 7018259392523306698}
   m_Layer: 5
   m_Name: toggle_crazyJuice
   m_TagString: Untagged
@@ -1428,8 +1485,33 @@ MonoBehaviour:
   m_Group: {fileID: 1159207274003993867}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7018259392523306698}
+        m_TargetAssemblyTypeName: PinataMiniGame.JuiceToggle, Assembly-CSharp
+        m_MethodName: SetState
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
+--- !u!114 &7018259392523306698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6797340149469522088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd70effb2c6f47919d79c35be6be9405, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _juiceType: 2
 --- !u!1 &7249770957000783149
 GameObject:
   m_ObjectHideFlags: 0

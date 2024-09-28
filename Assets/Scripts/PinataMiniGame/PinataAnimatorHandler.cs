@@ -5,44 +5,52 @@ using UnityEngine;
 
 namespace PinataMiniGame
 {
-	public class PinataAnimatorHandler : MonoBehaviour
+	public class PinataAnimatorHandler : PinataListener
 	{
-		[SerializeField] private PinataHandler _main;
 		[SerializeField] private Animator _animator;
-		
-		private readonly int _idleState = Animator.StringToHash("Idle");
-		private readonly int _hitState = Animator.StringToHash("Hit");
-		private readonly int _explodeState = Animator.StringToHash("Explosion");
 		
 		[Header("Hit settings")]
 		[SerializeField] private float _punchRotScale = 10;
 		[SerializeField] private float _punchScale = 0.5f;
+		[SerializeField] private int _shakeRandomness = 90;
 		[SerializeField] private float _punchDuration = 0.2f;
 		[SerializeField] private int _punchVibration = 2;
 
-		private void Awake()
+		private readonly int _idleState = Animator.StringToHash("Idle");
+		private readonly int _hitState = Animator.StringToHash("Hit");
+		private readonly int _explodeState = Animator.StringToHash("Explosion");
+		
+		private void OnEnable()
 		{
-			_main.OnHit += OnHitPinata;
-			_main.OnExplosion += OnPinataExplode;
+			_animator.Play(_idleState);
 		}
 
-		private void OnPinataExplode()
+		protected override void OnExplosion()
 		{
 			ExplodeAsync();
 		}
 
-		private void OnHitPinata(float obj)
+		protected override void OnPhasePass(int index)
+		{
+			
+		}
+
+		protected override void OnHit(float charge)
 		{
 			Pop();
 			HitAnimate();
 		}
 
-		private async Task Pop()
+		protected override void OnReset()
+		{
+			
+		}
+
+		private void Pop()
 		{
 			_punchRotScale *= -1;
 			transform.DOPunchRotation(Vector3.forward * _punchRotScale, _punchDuration, _punchVibration);
-			await transform.DOPunchScale(transform.localScale * _punchScale, _punchDuration, _punchVibration).AsyncWaitForCompletion();
-		
+			transform.DOShakeScale(_punchDuration, _punchScale, _punchVibration, _shakeRandomness);
 		}
 		
 		private void HitAnimate()

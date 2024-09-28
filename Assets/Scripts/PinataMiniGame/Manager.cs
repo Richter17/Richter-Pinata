@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using DG.Tweening;
 using Infrastructure;
+using PinataMiniGame.Settings;
 using UnityEngine;
 
 namespace PinataMiniGame
@@ -13,15 +15,19 @@ namespace PinataMiniGame
         [SerializeField] private Transform _pinataMain;
         [SerializeField] private CanvasGroup _menu;
         [SerializeField] private AudioClip _introSfx;
-        private bool _ranOnce;
+        [SerializeField] private List<PinataJuiceSettings> _settings;
 
         public static JuiceType Juice { get; private set; } = JuiceType.Normal;
         public void Show()
         {
-            JuiceToggle.OnSelectJuiceType = SelectJuiceType;
-            if(_ranOnce)
-                _pinata.Reset();
-            _ranOnce = true;
+            Application.targetFrameRate = 60;
+            if (_settings.Count == 0)
+            {
+                Debug.LogError("Pinata game can not be played! Settings is empty");
+                return;
+            }
+            var settings = GetJuiceSettings();
+            _pinata.Init(settings);
             _lightsMain.gameObject.SetActive(true);
             _pinataMain.gameObject.SetActive(true);
             HideMenu();
@@ -30,8 +36,15 @@ namespace PinataMiniGame
             Enter();
         }
 
+        private PinataJuiceSettings GetJuiceSettings()
+        {
+            var settings = _settings.Find(s => s.Juice == Juice);
+            return settings == null ? _settings[0] : settings;
+        }
+
         private void Start()
         {
+            JuiceToggle.OnSelectJuiceType = SelectJuiceType;
             ShowMenu();
         }
 
@@ -51,6 +64,7 @@ namespace PinataMiniGame
 
         private void SelectJuiceType(JuiceType juiceType)
         {
+            Debug.Log($"select {juiceType}");
             Juice = juiceType;
         }
 

@@ -20,7 +20,7 @@ namespace Plugins.Richter.Haptic
 			Log($"Vibrate primitive {predefined} with scale: {1}");
 		}
 
-		public void Vibrate(List<(float amplitude, float duration)> amplitudes, int repeat = -1)
+		public void Vibrate(List<VibrateStep> sequence, int repeat = -1)
 		{
 			Log($"Vibrate unique pattern");
 		}

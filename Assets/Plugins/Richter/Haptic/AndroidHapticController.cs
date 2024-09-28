@@ -59,14 +59,14 @@ namespace Plugins.Richter.Haptic
 			}
 		}
 
-		public void Vibrate(List<(float amplitude, float duration)> vibrateSequence, int repeat = -1)
+		public void Vibrate(List<VibrateStep> vibrateSequence, int repeat = -1)
 		{
 			var amps = new int[vibrateSequence.Count];
 			var mss = new long[vibrateSequence.Count];
 			for (int i = 0; i < vibrateSequence.Count; i++)
 			{
-				amps[i] = ConvertRangeToAmplitude(vibrateSequence[i].amplitude);
-				mss[i] = ConvertSecondsToMilliseconds(vibrateSequence[i].duration);
+				amps[i] = ConvertRangeToAmplitude(vibrateSequence[i].Amplitude);
+				mss[i] = ConvertSecondsToMilliseconds(vibrateSequence[i].Duration);
 			}
 			
 			_plugin?.Call(nameof(Vibrate), amps, mss, repeat);

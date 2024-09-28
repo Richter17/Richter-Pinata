@@ -79,11 +79,11 @@ namespace Plugins.Richter.Haptic
 			Instance.Vibrate(predefined, scale);
 		}
 
-		public void Vibrate(List<(float amplitude, float duration)> amplitudes, int repeat = -1)
+		public void Vibrate(List<VibrateStep> sequence, int repeat = -1)
 		{
 			if(!IsEnabled)
 				return;
-			Instance.Vibrate(amplitudes, repeat);
+			Instance.Vibrate(sequence, repeat);
 		}
 
 		public void Stop()

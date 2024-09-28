@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Infrastructure;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace PinataMiniGame
 {
-	public class PinataSoundController : MonoBehaviour
+	public class PinataSoundController : PinataListener
 	{
-		[SerializeField] private PinataHandler _pinata;
 		[SerializeField] private float _hitSound = 0.5f;
+		[SerializeField] private float _delayInExplosionSfx = 0.5f;
 		[SerializeField] private List<AudioClip> _hitsPinataSfx;
 		[SerializeField] private AudioClip[] _hitsCrackSfx;
 		[SerializeField] private AudioClip[] _explosionsSfx;
@@ -17,15 +18,29 @@ namespace PinataMiniGame
 		private AudioClip _lastClip;
 		private int _hitSfxIndex;
 
-		private void Awake()
+		protected override void OnExplosion()
 		{
-			_pinata.OnHit += PlayHitSound;
-			_pinata.OnPhasePass += PlayPhaseSfx;
-			_pinata.OnExplosion += PlayExplosionSfx;
+			PlayExplosionSfx();
 		}
 
-		private void PlayExplosionSfx()
+		protected override void OnPhasePass(int index)
 		{
+			PlayPhaseSfx();
+		}
+
+		protected override void OnHit(float charge)
+		{
+			PlayHitSound(charge);
+		}
+
+		protected override void OnReset()
+		{
+			
+		}
+
+		private async Task PlayExplosionSfx()
+		{
+			await Task.Delay(TimeSpan.FromSeconds(_delayInExplosionSfx));
 			foreach (var clip in _explosionsSfx)
 			{
 				SoundManager.Instance.PlaySFX(clip);
@@ -43,7 +58,7 @@ namespace PinataMiniGame
 			_hitsPinataSfx.Remove(currentClip);
 		}
 
-		private void PlayPhaseSfx(int phase)
+		private void PlayPhaseSfx()
 		{
 			_hitSfxIndex++;
 			_hitSfxIndex %= _hitsCrackSfx.Length;
