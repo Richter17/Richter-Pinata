@@ -13,6 +13,7 @@ namespace PinataMiniGame
 		[SerializeField] private float _radius = 1;
 		[SerializeField] private ParticleSystem _pinataSparkles;
 		[SerializeField] private ParticleSystem _pinataSparklesBig;
+		[SerializeField] private int _sparksOnExplosions = 3;
 
 
 		private ObjectPool<ParticleSystem> _particlesPool;
@@ -25,12 +26,21 @@ namespace PinataMiniGame
 		{
 			_main.OnHit += OnHit;
 			_main.OnPhasePass += OnPhasePass;
+			_main.OnExplosion += OnExplosion;
 			_particlesPool = new(p
 					=> p.gameObject.SetActive(true),
 				p => p.gameObject.SetActive(false),
 				() => Instantiate(_pinataSparkles, transform));
 		}
-		
+
+		private void OnExplosion()
+		{
+			for (int i = 0; i < _sparksOnExplosions; i++)
+			{
+				ExplodeBig();
+			}
+		}
+
 		private void OnHit(float charge)
 		{
 			var sparks = _particlesPool.Get();
@@ -45,6 +55,11 @@ namespace PinataMiniGame
 		}
 
 		private void OnPhasePass(int obj)
+		{
+			ExplodeBig();
+		}
+
+		private void ExplodeBig()
 		{
 			var sparks = Instantiate(_pinataSparklesBig, transform);
 			SetEffectPosition(sparks.transform);
