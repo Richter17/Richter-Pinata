@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: HardJuiceSettings
   m_EditorClassIdentifier: 
   <Juice>k__BackingField: 1
-  <ChargeDelay>k__BackingField: 0.3
+  <ChargeDelay>k__BackingField: 0.2
   <ReturnSpeed>k__BackingField: 0.8
   <TimeoutMultiplier>k__BackingField: 1
   <Phases>k__BackingField:
   - 1.5
   - 2.5
+  - 3
   <Visual>k__BackingField: {fileID: 588537820673305094, guid: c36c8d3e20682754ab98c67b457e0a6a, type: 3}
   <GameElements>k__BackingField:
   - {fileID: 2388093156589454422, guid: 1b1e5acded8276d49bacfcff27f6c554, type: 3}

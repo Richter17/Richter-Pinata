@@ -20,6 +20,7 @@ MonoBehaviour:
   - 2
   - 3
   - 4
+  - 4.5
   <Visual>k__BackingField: {fileID: 588537820673305094, guid: f796f4d8fca47de43aba4767e1633bbc, type: 3}
   <GameElements>k__BackingField:
   - {fileID: 2388093156589454422, guid: 6241a2ceab8130343884bdd6d79597b5, type: 3}

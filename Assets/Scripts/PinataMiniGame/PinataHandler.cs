@@ -18,7 +18,6 @@ namespace PinataMiniGame
 		private bool _canReturnToDefault;
 		private float _chargeCount;
 		private float _returnTimout;
-		private int _hitSfxIndex;
 		private int _phaseIndex;
 		private AudioClip _lastClip;
 		private bool _canClick = true;
@@ -93,21 +92,22 @@ namespace PinataMiniGame
 		{
 			if (!_canClick)
 				return;
-			HandleProgress();
 			OnHit?.Invoke(_chargeCount);
+			HandleProgress();
 		}
 
 		private void HandleProgress()
 		{
 			_chargeCount += _settings.ChargeDelay;
-			if (_phaseIndex >= _settings.Phases.Length)
+			if (_chargeCount < _settings.Phases[_phaseIndex]) 
+				return;
+			Debug.Log($"passed phase {_phaseIndex}, {_chargeCount}");
+			if (_phaseIndex == _settings.Phases.Length - 1)
 			{
 				Explosion();
 				return;
 			}
-			if (_chargeCount < _settings.Phases[_phaseIndex]) 
-				return;
-			OnPhasePass?.Invoke(_hitSfxIndex);
+			OnPhasePass?.Invoke(_phaseIndex);
 			_phaseIndex++;
 		}
 
@@ -118,7 +118,6 @@ namespace PinataMiniGame
 			OnExplosion?.Invoke();
 			_canClick = false;
 		}
-		
 	
 		private IEnumerator ProcessReturn() //can be with Unitask/Task
 		{
